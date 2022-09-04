@@ -17,7 +17,7 @@ export default function TopoJSON(props) {
       layer.addData(jsonData);
     }
   }
-
+  
   function onEachFeature(feature, layer) {
     if (feature.properties) {
       const { area } = feature.properties;
@@ -25,20 +25,29 @@ export default function TopoJSON(props) {
     }
   }
 
+  function forEachArea (feature, layer) {
+    if (feature.properties) {
+      const { area } = feature.properties;
+      return area
+      console.log(area)
+    }
+  }
+  
   
   useEffect(() => {
     const layer = layerRef.current;
     addData(layer, props.data);
   }, [props.data]);
   
-  console.dir(data.features[0])
+  
+  // console.log(feature.properties)
   // console.dir(data.features.properties)
 
   return (
     <>
       <GeoJSON ref={layerRef} {...otherProps} onEachFeature={onEachFeature} />
       <div>
-          <Legend ref={layerRef} {...otherProps} onEachFeature={onEachFeature}/>
+          <Legend ref={layerRef} {...otherProps} onEachArea={forEachArea}/>
       </div>
     </>
   );
