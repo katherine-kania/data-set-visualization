@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { GeoJSON } from "react-leaflet";
 import * as topojson from "topojson-client";
+import Legend from "./Legend";
 
 export default function TopoJSON(props) {
   const layerRef = useRef(null);
@@ -24,12 +25,21 @@ export default function TopoJSON(props) {
     }
   }
 
+  
   useEffect(() => {
     const layer = layerRef.current;
     addData(layer, props.data);
   }, [props.data]);
+  
+  console.dir(data.features[0])
+  // console.dir(data.features.properties)
 
   return (
-    <GeoJSON ref={layerRef} {...otherProps} onEachFeature={onEachFeature} />
+    <>
+      <GeoJSON ref={layerRef} {...otherProps} onEachFeature={onEachFeature} />
+      <div>
+          <Legend ref={layerRef} {...otherProps} onEachFeature={onEachFeature}/>
+      </div>
+    </>
   );
 }

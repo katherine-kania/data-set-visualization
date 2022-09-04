@@ -1,32 +1,23 @@
-import React, { Component } from "react";
+import React from 'react';
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./MyMap.css";
 
-import TopoJSON from "./../data/TopoJSON";
+import TopoJSON from "./TopoJSON";
 import topojson from "./../data/sidewalks.json";
 
-class MyMap extends Component {
-  state = {};
+const MyMap = () => {
 
-  // componentDidMount(){
-  //     console.log(mapData)
-  // }
-
-  sidewalkStyle = {
+  const sidewalkStyle = {
     color: "yellow",
     weight: 1,
     // dashArray: 5,
   };
 
-//   onEachSidewalk = (sidewalk, layer) => {
-//     const sidewalkArea = sidewalk.properties.area;
-//     console.log(sidewalk);
-//     layer.bindPopup(sidewalkArea);
-//   };
+  
 
-  render() {
-    return (
+  return (
+    <>
       <div>
         <h1 style={{ textAlign: "center" }}>NYC COVID Sidewalk Density Data</h1>
         <MapContainer
@@ -35,9 +26,8 @@ class MyMap extends Component {
           center={[40.73061, -73.935242]}
         >
           <TopoJSON
-            style={this.sidewalkStyle}
+            style={sidewalkStyle}
             data={topojson}
-            // onEachFeature={this.onEachSidewalk}
           />
           <TileLayer
             style={{ opacity: ".5" }}
@@ -46,8 +36,8 @@ class MyMap extends Component {
           />
         </MapContainer>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default MyMap;
