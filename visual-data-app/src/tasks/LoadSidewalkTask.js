@@ -1,9 +1,9 @@
-import { features } from "../data/countries.json";
+import * as topojson from "topojson-client"
 
-class LoadCountriesTask {
+class LoadSidewalkTask {
   load = (setState) => {
-    setState(features);
+    setState(topojson);
   };
 }
 
-export default LoadCountriesTask;
+export default LoadSidewalkTask;

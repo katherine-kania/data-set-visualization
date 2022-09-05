@@ -8,14 +8,6 @@ import topojson from "./../data/sidewalks.json";
 
 const MyMap = () => {
 
-  const sidewalkStyle = {
-    color: "yellow",
-    weight: 1,
-    // dashArray: 5,
-  };
-
-  
-
   return (
     <>
       <div>
@@ -26,7 +18,6 @@ const MyMap = () => {
           center={[40.73061, -73.935242]}
         >
           <TopoJSON
-            style={sidewalkStyle}
             data={topojson}
           />
           <TileLayer

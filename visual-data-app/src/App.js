@@ -1,10 +1,10 @@
 import React from 'react';
-import MyMap from './components/MyMap'
+import SidewalkData from './components/SidewalkData';
 
 function App() {
   return (
     <>
-      <MyMap />
+      <SidewalkData />
     </>
   );
 }

@@ -1,23 +1,33 @@
-import React, { useRef, useEffect } from "react";
-// import Slider from '@mui/material/Slider'
+import React from "react";
 
-const Legend = ( props ) => {
-
-    console.dir('Legend: ' + this.props)
-    return (
-        <div>
-            {/* <Slider
-                aria-label="Small steps"
-                defaultValue={0.00000005}
-                getAriaValueText={this.props}
-                step={0.00000001}
-                marks
-                min={-0.00000005}
-                max={0.0000001}
-                valueLabelDisplay="auto"
-            /> */}
+const Legend = ({ legendItems }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "stretch",
+      }}
+    >
+      {legendItems.map((item) => (
+        <div
+          key={item.title}
+          style={{
+            backgroundColor: item.color,
+            flex: 1,
+            display: "flex",
+            alignItems: "center", // vertical
+            justifyContent: "center", // horiztontal
+            color: item.textColor != null ? item.textColor : "black",
+            fontWeight: "bolder",
+            fontSize: "1.5em",
+            height: "10vh",
+          }}
+        >
+          <span>{item.title}</span>
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
 export default Legend;
