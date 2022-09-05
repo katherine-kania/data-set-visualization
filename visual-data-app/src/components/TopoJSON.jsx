@@ -18,10 +18,10 @@ export default function TopoJSON(props) {
   }
   
   function onEachFeature(feature, layer) {
-    layer.options.fillColor = country.properties.color;
-    const name = country.properties.ADMIN;
-    const confirmedText = country.properties.confirmedText;
-    layer.bindPopup(`${name} ${confirmedText}`);
+    if (feature.properties) {
+      layer.options.fillColor = feature.properties.color;
+      const { area } = feature.properties;
+      layer.bindPopup(`${area}`);
     }
   }
   
@@ -32,8 +32,6 @@ export default function TopoJSON(props) {
   
 
   return (
-    <>
       <GeoJSON ref={layerRef} {...otherProps} data={data} onEachFeature={onEachFeature} />
-    </>
   );
 }
