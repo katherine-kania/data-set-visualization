@@ -13,7 +13,7 @@ ___
 ___
 
 ### Approach
-I decided to use a Reach app build and React-Leaflet to display the 2d data of the sidewalks. 
+Using a React app build and React-Leaflet to display in 2d of nyc sidewalks and the . 
 
 
 ### Challenges
